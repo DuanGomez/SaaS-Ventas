@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #FAFAF7; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #131316; }
+    h1, h2, h3 { font-family: 'Sora', system-ui, sans-serif; margin: 0; }
+    a { color: #55565C; text-decoration: none; }
+    a:hover { color: #131316; }
+    .thumb { transition: border-color .15s ease; cursor: pointer; }
+    .thumb-active { border-color: #131316 !important; }
+    .swatch { transition: transform .15s ease; cursor: pointer; }
+    .swatch:hover { transform: scale(1.1); }
+    .pill { transition: background .15s ease, color .15s ease, border-color .15s ease; cursor: pointer; }
+    .pill-active { background:#131316; color:#fff; border-color:#131316; }
+    .btn-wa { background: oklch(0.62 0.17 152); color: #fff; transition: background .15s ease; }
+    .btn-wa:hover { background: oklch(0.54 0.17 152); }
+  </style>
+</helmet>
+
+<div style="width:1440px; background:#FAFAF7;">
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; padding:0 64px; height:84px; background:rgba(250,250,247,.85); backdrop-filter:blur(12px); border-bottom:1px solid #E6E4DE;">
+    <div style="display:flex; align-items:center; gap:48px;">
+      <div style="font-family:'Sora',sans-serif; font-weight:800; font-size:22px;">NOVA<span style="color:oklch(0.56 0.17 275);">.</span></div>
+      <div style="display:flex; gap:32px; font-size:15px; font-weight:500;">
+        <a href="#">Inicio</a><a href="#">Catálogo</a><a href="#">Accesorios</a><a href="#">Nosotros</a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" style="color:#55565C;"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div class="btn-wa" style="display:flex; align-items:center; gap:8px; padding:10px 18px; border-radius:100px; font-size:14px; font-weight:600;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12c0 1.77.52 3.42 1.42 4.8L3 21l4.35-1.4A8.9 8.9 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 8.4c.2-.5.5-.5.7-.5h.5c.16 0 .38 0 .55.4.2.5.68 1.75.74 1.87.06.13.1.28.02.45-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.26-.11.5.15.26.68 1.12 1.46 1.82.99.9 1.83 1.18 2.09 1.31.26.13.4.11.55-.07.15-.17.63-.73.8-.98.17-.25.34-.2.56-.12.23.08 1.45.68 1.7.81.24.13.4.19.46.3.06.11.06.63-.15 1.24-.21.6-1.23 1.15-1.7 1.22-.44.07-1 .1-1.6-.1-.37-.12-.85-.28-1.46-.55-2.58-1.12-4.26-3.73-4.4-3.9-.13-.17-1.05-1.4-1.05-2.66 0-1.26.66-1.87.9-2.13Z" fill="currentColor"/></svg>
+        Escríbenos
+      </div>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div style="display:flex; gap:8px; align-items:center; padding:28px 64px 0; font-size:14px; color:#8b8b91;">
+    <a href="#">Inicio</a> <span>/</span> <a href="#">iPhone</a> <span>/</span> <span style="color:#131316; font-weight:600;">iPhone 13</span>
+  </div>
+
+  <!-- MAIN -->
+  <div style="display:flex; gap:64px; padding:32px 64px 80px;">
+
+    <!-- GALLERY -->
+    <div style="display:flex; flex-direction:column; gap:16px; width:560px;">
+      <div style="height:520px; border-radius:28px; background:linear-gradient(160deg, oklch(0.95 0.02 275), oklch(0.9 0.04 275)); display:flex; align-items:center; justify-content:center;">
+        <svg width="240" height="480" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="10" width="180" height="380" rx="38" fill="#1d1d1f"/>
+          <rect x="19" y="19" width="162" height="362" rx="30" fill="#e9e9ee"/>
+          <rect x="72" y="34" width="56" height="16" rx="8" fill="#1d1d1f"/>
+          <rect x="34" y="68" width="132" height="274" rx="16" fill="url(#g2)"/>
+          <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="oklch(0.56 0.17 275)"/><stop offset="1" stop-color="oklch(0.72 0.14 250)"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div style="display:flex; gap:14px;">
+        <div class="thumb thumb-active" style="width:110px; height:110px; border-radius:16px; border:2px solid #E6E4DE; background:oklch(0.95 0.02 275);"></div>
+        <div class="thumb" style="width:110px; height:110px; border-radius:16px; border:2px solid #E6E4DE; background:#F1F0EC;"></div>
+        <div class="thumb" style="width:110px; height:110px; border-radius:16px; border:2px solid #E6E4DE; background:#F1F0EC;"></div>
+        <div class="thumb" style="width:110px; height:110px; border-radius:16px; border:2px solid #E6E4DE; background:#F1F0EC;"></div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div style="display:flex; flex-direction:column; gap:24px; width:520px; padding-top:8px;">
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:13px; font-weight:700; color:oklch(0.44 0.17 275); text-transform:uppercase; letter-spacing:.05em;">iPhone</div>
+        <h1 style="font-size:38px; letter-spacing:-.02em; font-weight:800;">iPhone 13</h1>
+        <div style="font-size:26px; font-weight:800;">$2.499.000 <span style="font-size:15px; font-weight:500; color:#8b8b91;">COP</span></div>
+      </div>
+
+      <p style="font-size:15px; line-height:1.7; color:#55565C; margin:0;">Un salto enorme en duración de batería. Un sistema de doble cámara ultra avanzado. Y el chip más rápido en un smartphone. Bienvenido al iPhone 13.</p>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:13px; font-weight:700; color:#131316;">Color — Medianoche</div>
+        <div style="display:flex; gap:10px;">
+          <div class="swatch" style="width:32px; height:32px; border-radius:100px; background:#1d1d1f; border:2px solid #131316;"></div>
+          <div class="swatch" style="width:32px; height:32px; border-radius:100px; background:oklch(0.68 0.16 30); border:2px solid #fff; box-shadow:0 0 0 1px #E6E4DE;"></div>
+          <div class="swatch" style="width:32px; height:32px; border-radius:100px; background:oklch(0.72 0.13 350); border:2px solid #fff; box-shadow:0 0 0 1px #E6E4DE;"></div>
+          <div class="swatch" style="width:32px; height:32px; border-radius:100px; background:oklch(0.72 0.14 250); border:2px solid #fff; box-shadow:0 0 0 1px #E6E4DE;"></div>
+          <div class="swatch" style="width:32px; height:32px; border-radius:100px; background:#F5F4F0; border:2px solid #fff; box-shadow:0 0 0 1px #E6E4DE;"></div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="font-size:13px; font-weight:700; color:#131316;">Almacenamiento</div>
+        <div style="display:flex; gap:10px;">
+          <div class="pill pill-active" style="padding:10px 20px; border-radius:100px; border:1px solid #E6E4DE; font-size:14px; font-weight:600;">128GB</div>
+          <div class="pill" style="padding:10px 20px; border-radius:100px; border:1px solid #E6E4DE; font-size:14px; font-weight:600;">256GB</div>
+          <div class="pill" style="padding:10px 20px; border-radius:100px; border:1px solid #E6E4DE; font-size:14px; font-weight:600;">512GB</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px; padding-top:10px;">
+        <div style="display:flex; align-items:center; border:1px solid #E6E4DE; border-radius:100px; overflow:hidden;">
+          <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer;">−</div>
+          <div style="width:40px; text-align:center; font-size:15px; font-weight:600;">1</div>
+          <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; font-size:18px; cursor:pointer;">+</div>
+        </div>
+        <div class="btn-wa" style="flex:1; display:flex; align-items:center; justify-content:center; gap:10px; padding:16px 24px; border-radius:100px; font-size:16px; font-weight:700;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3C7.03 3 3 7.03 3 12c0 1.77.52 3.42 1.42 4.8L3 21l4.35-1.4A8.9 8.9 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.6 8.4c.2-.5.5-.5.7-.5h.5c.16 0 .38 0 .55.4.2.5.68 1.75.74 1.87.06.13.1.28.02.45-.08.17-.13.28-.26.43-.13.15-.27.34-.39.46-.13.13-.26.26-.11.5.15.26.68 1.12 1.46 1.82.99.9 1.83 1.18 2.09 1.31.26.13.4.11.55-.07.15-.17.63-.73.8-.98.17-.25.34-.2.56-.12.23.08 1.45.68 1.7.81.24.13.4.19.46.3.06.11.06.63-.15 1.24-.21.6-1.23 1.15-1.7 1.22-.44.07-1 .1-1.6-.1-.37-.12-.85-.28-1.46-.55-2.58-1.12-4.26-3.73-4.4-3.9-.13-.17-1.05-1.4-1.05-2.66 0-1.26.66-1.87.9-2.13Z" fill="currentColor"/></svg>
+          Comprar por WhatsApp
+        </div>
+      </div>
+      <div style="font-size:13px; color:#8b8b91; margin-top:-8px;">Te atendemos directo por WhatsApp para confirmar disponibilidad, pago y envío.</div>
+
+      <!-- FEATURES -->
+      <div style="display:flex; flex-direction:column; gap:0; border-top:1px solid #E6E4DE; margin-top:12px;">
+        <div style="font-size:15px; font-weight:700; padding:20px 0 12px;">Características</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; padding-bottom:20px;">
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Pantalla</span><span style="font-size:14px; font-weight:600;">6.1" Super Retina XDR</span></div>
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Chip</span><span style="font-size:14px; font-weight:600;">A15 Bionic</span></div>
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Cámara</span><span style="font-size:14px; font-weight:600;">Dual 12MP, modo Noche</span></div>
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Batería</span><span style="font-size:14px; font-weight:600;">Hasta 19h de video</span></div>
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Resistencia</span><span style="font-size:14px; font-weight:600;">IP68</span></div>
+          <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#8b8b91;">Conectividad</span><span style="font-size:14px; font-weight:600;">5G · USB-C</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

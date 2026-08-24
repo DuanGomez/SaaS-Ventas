@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #131316; background:#FAFAF7; }
+    h1, h2 { font-family: 'Sora', system-ui, sans-serif; margin: 0; }
+    a { text-decoration: none; }
+    .side-link { color:#A2A2A8; transition:color .15s ease, background .15s ease; cursor:pointer; }
+    .side-link:hover { color:#fff; background:#222226; }
+    .side-link-active { color:#fff !important; background:oklch(0.56 0.17 275) !important; }
+    .btn-dark { background:#131316; color:#fff; transition:background .15s ease; cursor:pointer; }
+    .btn-dark:hover { background:#2c2c31; }
+    .row:hover { background:#F7F6F2; }
+    .icon-btn { transition:background .15s ease; cursor:pointer; }
+    .icon-btn:hover { background:#F1F0EC; }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:1000px; display:flex; background:#FAFAF7;">
+
+  <!-- SIDEBAR -->
+  <div style="width:260px; background:#131316; display:flex; flex-direction:column; padding:28px 20px; gap:32px; flex-shrink:0;">
+    <div style="font-family:'Sora',sans-serif; font-weight:800; font-size:20px; color:#fff; padding:0 8px;">NOVA<span style="color:oklch(0.7 0.15 275);">.</span> <span style="font-size:12px; font-weight:500; color:#8b8b91;">admin</span></div>
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+        Panel general
+      </div>
+      <div class="side-link side-link-active" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 8v8l9 5 9-5V8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Productos
+      </div>
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Categorías
+      </div>
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14 3h-4l-.6 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9c.6.5 1.3.9 2 1.2L10 21h4l.6-2.6c.7-.3 1.4-.7 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        Configuración
+      </div>
+    </div>
+    <div style="margin-top:auto; display:flex; flex-direction:column; gap:4px;">
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Cerrar sesión
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+    <!-- TOPBAR -->
+    <div style="height:76px; display:flex; align-items:center; justify-content:space-between; padding:0 40px; border-bottom:1px solid #E6E4DE; background:#fff;">
+      <div style="font-size:14px; color:#8b8b91;">Tienda: <span style="color:#131316; font-weight:700;">NOVA Store</span></div>
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:oklch(0.44 0.17 275); cursor:pointer;">
+          Ver tienda
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="width:40px; height:40px; border-radius:100px; background:oklch(0.95 0.02 275); display:flex; align-items:center; justify-content:center; font-weight:700; color:oklch(0.44 0.17 275); font-size:14px;">DG</div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div style="padding:36px 40px; display:flex; flex-direction:column; gap:28px; overflow:auto;">
+
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <h1 style="font-size:26px; font-weight:800;">Productos</h1>
+          <div style="font-size:14px; color:#8b8b91; margin-top:4px;">Gestiona el catálogo que ven tus clientes</div>
+        </div>
+        <div class="btn-dark" style="display:flex; align-items:center; gap:8px; padding:13px 22px; border-radius:12px; font-size:14px; font-weight:700;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Nuevo producto
+        </div>
+      </div>
+
+      <!-- FILTER BAR -->
+      <div style="display:flex; gap:12px; align-items:center;">
+        <div style="flex:1; max-width:340px; display:flex; align-items:center; gap:10px; background:#fff; border:1px solid #E6E4DE; border-radius:12px; padding:11px 16px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color:#8b8b91;"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span style="font-size:14px; color:#8b8b91;">Buscar producto...</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; background:#fff; border:1px solid #E6E4DE; border-radius:12px; padding:11px 16px; font-size:14px; font-weight:600; color:#55565C;">
+          Categoría: Todas
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div style="background:#fff; border:1px solid #E6E4DE; border-radius:20px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:56px 3fr 1.4fr 1.2fr 1fr 100px; gap:16px; padding:14px 24px; font-size:12px; font-weight:700; color:#8b8b91; text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid #E6E4DE;">
+          <div></div><div>Producto</div><div>Categoría</div><div>Precio</div><div>Estado</div><div>Acciones</div>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns:56px 3fr 1.4fr 1.2fr 1fr 100px; gap:16px; padding:14px 24px; align-items:center; border-bottom:1px solid #F1F0EC;">
+          <div style="width:40px; height:40px; border-radius:10px; background:oklch(0.95 0.02 275);"></div>
+          <div style="font-size:14px; font-weight:700;">iPhone 13 <span style="font-weight:500; color:#8b8b91;">· 128GB Medianoche</span></div>
+          <div style="font-size:14px; color:#55565C;">iPhone</div>
+          <div style="font-size:14px; font-weight:700;">$2.499.000</div>
+          <div><span style="font-size:12px; font-weight:700; padding:5px 12px; border-radius:100px; background:oklch(0.92 0.05 152); color:oklch(0.4 0.15 152);">Activo</span></div>
+          <div style="display:flex; gap:8px;">
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="#55565C" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns:56px 3fr 1.4fr 1.2fr 1fr 100px; gap:16px; padding:14px 24px; align-items:center; border-bottom:1px solid #F1F0EC;">
+          <div style="width:40px; height:40px; border-radius:10px; background:oklch(0.93 0.03 30);"></div>
+          <div style="font-size:14px; font-weight:700;">iPhone 13 Pro <span style="font-weight:500; color:#8b8b91;">· 256GB Alpine Green</span></div>
+          <div style="font-size:14px; color:#55565C;">iPhone</div>
+          <div style="font-size:14px; font-weight:700;">$3.299.000</div>
+          <div><span style="font-size:12px; font-weight:700; padding:5px 12px; border-radius:100px; background:oklch(0.92 0.05 152); color:oklch(0.4 0.15 152);">Activo</span></div>
+          <div style="display:flex; gap:8px;">
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="#55565C" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns:56px 3fr 1.4fr 1.2fr 1fr 100px; gap:16px; padding:14px 24px; align-items:center; border-bottom:1px solid #F1F0EC;">
+          <div style="width:40px; height:40px; border-radius:10px; background:oklch(0.94 0.03 340);"></div>
+          <div style="font-size:14px; font-weight:700;">iPhone 13 mini <span style="font-weight:500; color:#8b8b91;">· 128GB Rosa</span></div>
+          <div style="font-size:14px; color:#55565C;">iPhone</div>
+          <div style="font-size:14px; font-weight:700;">$2.199.000</div>
+          <div><span style="font-size:12px; font-weight:700; padding:5px 12px; border-radius:100px; background:#F1F0EC; color:#8b8b91;">Agotado</span></div>
+          <div style="display:flex; gap:8px;">
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="#55565C" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns:56px 3fr 1.4fr 1.2fr 1fr 100px; gap:16px; padding:14px 24px; align-items:center;">
+          <div style="width:40px; height:40px; border-radius:10px; background:#F1F0EC;"></div>
+          <div style="font-size:14px; font-weight:700;">AirPods Pro <span style="font-weight:500; color:#8b8b91;">· Cancelación de ruido</span></div>
+          <div style="font-size:14px; color:#55565C;">Accesorios</div>
+          <div style="font-size:14px; font-weight:700;">$899.000</div>
+          <div><span style="font-size:12px; font-weight:700; padding:5px 12px; border-radius:100px; background:oklch(0.92 0.05 152); color:oklch(0.4 0.15 152);">Activo</span></div>
+          <div style="display:flex; gap:8px;">
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="#55565C" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <div class="icon-btn" style="width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

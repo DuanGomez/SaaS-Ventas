@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #131316; background:#FAFAF7; }
+    h1, h2 { font-family: 'Sora', system-ui, sans-serif; margin: 0; }
+    input, textarea, select { font-family: inherit; }
+    .side-link { color:#A2A2A8; transition:color .15s ease, background .15s ease; cursor:pointer; }
+    .side-link-active { color:#fff !important; background:oklch(0.56 0.17 275) !important; }
+    .btn-dark { background:#131316; color:#fff; transition:background .15s ease; cursor:pointer; }
+    .btn-dark:hover { background:#2c2c31; }
+    .btn-ghost { background:#fff; color:#131316; border:1px solid #E6E4DE; cursor:pointer; transition:background .15s ease; }
+    .btn-ghost:hover { background:#F1F0EC; }
+    .field { border:1px solid #E6E4DE; border-radius:12px; outline:none; }
+    .field:focus { border-color:oklch(0.56 0.17 275); }
+    .upload { border:2px dashed #D8D6CF; transition:border-color .15s ease, background .15s ease; }
+    .upload:hover { border-color:oklch(0.56 0.17 275); background:oklch(0.98 0.01 275); }
+  </style>
+</helmet>
+
+<div style="width:1440px; height:1020px; display:flex; background:#FAFAF7;">
+
+  <!-- SIDEBAR -->
+  <div style="width:260px; background:#131316; display:flex; flex-direction:column; padding:28px 20px; gap:32px; flex-shrink:0;">
+    <div style="font-family:'Sora',sans-serif; font-weight:800; font-size:20px; color:#fff; padding:0 8px;">NOVA<span style="color:oklch(0.7 0.15 275);">.</span> <span style="font-size:12px; font-weight:500; color:#8b8b91;">admin</span></div>
+    <div style="display:flex; flex-direction:column; gap:4px;">
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+        Panel general
+      </div>
+      <div class="side-link side-link-active" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 8l9-5 9 5-9 5-9-5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 8v8l9 5 9-5V8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Productos
+      </div>
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Categorías
+      </div>
+      <div class="side-link" style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:12px; font-size:14px; font-weight:600;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14 3h-4l-.6 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9c.6.5 1.3.9 2 1.2L10 21h4l.6-2.6c.7-.3 1.4-.7 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        Configuración
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+    <div style="height:76px; display:flex; align-items:center; padding:0 40px; border-bottom:1px solid #E6E4DE; background:#fff; gap:10px; font-size:14px; color:#8b8b91;">
+      <span>Productos</span><span>/</span><span style="color:#131316; font-weight:700;">Nuevo producto</span>
+    </div>
+
+    <div style="padding:36px 40px 60px; display:flex; flex-direction:column; gap:28px;">
+      <h1 style="font-size:26px; font-weight:800;">Nuevo producto</h1>
+
+      <div style="display:flex; gap:32px; align-items:flex-start;">
+
+        <!-- LEFT: IMAGES -->
+        <div style="width:420px; display:flex; flex-direction:column; gap:16px; background:#fff; border:1px solid #E6E4DE; border-radius:20px; padding:24px; flex-shrink:0;">
+          <div style="font-size:14px; font-weight:700;">Fotos del producto</div>
+          <div class="upload" style="height:220px; border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:#8b8b91;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 16V4M12 4l-4 4M12 4l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <div style="font-size:13px; font-weight:600;">Arrastra fotos aquí</div>
+            <div style="font-size:12px;">o haz clic para subir · JPG, PNG</div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px;">
+            <div style="aspect-ratio:1; border-radius:10px; background:oklch(0.95 0.02 275); position:relative;">
+              <div style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</div>
+            </div>
+            <div style="aspect-ratio:1; border-radius:10px; background:#F1F0EC; position:relative;">
+              <div style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</div>
+            </div>
+            <div style="aspect-ratio:1; border-radius:10px; background:#F1F0EC; position:relative;">
+              <div style="position:absolute; top:-6px; right:-6px; width:20px; height:20px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</div>
+            </div>
+            <div class="btn-ghost" style="aspect-ratio:1; border-radius:10px; display:flex; align-items:center; justify-content:center; border-style:dashed;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#8b8b91" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:8px; border-top:1px solid #F1F0EC;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="font-size:14px; font-weight:700;">Estado del producto</div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <div style="flex:1; text-align:center; padding:11px; border-radius:10px; background:#131316; color:#fff; font-size:13px; font-weight:700;">Activo</div>
+              <div class="btn-ghost" style="flex:1; text-align:center; padding:11px; border-radius:10px; font-size:13px; font-weight:700;">Agotado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: FIELDS -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:20px; background:#fff; border:1px solid #E6E4DE; border-radius:20px; padding:28px;">
+
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:13px; font-weight:700;">Nombre del producto</label>
+            <input class="field" type="text" value="iPhone 13" style="padding:13px 16px; font-size:15px;"/>
+          </div>
+
+          <div style="display:flex; gap:16px;">
+            <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:13px; font-weight:700;">Categoría</label>
+              <div class="field" style="padding:13px 16px; font-size:15px; display:flex; align-items:center; justify-content:space-between; color:#131316;">
+                iPhone
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#8b8b91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div style="flex:1; display:flex; flex-direction:column; gap:6px;">
+              <label style="font-size:13px; font-weight:700;">Precio (COP)</label>
+              <input class="field" type="text" value="2.499.000" style="padding:13px 16px; font-size:15px;"/>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <label style="font-size:13px; font-weight:700;">Descripción</label>
+            <textarea class="field" rows="3" style="padding:13px 16px; font-size:14px; line-height:1.6; resize:none;">Un salto enorme en duración de batería. Un sistema de doble cámara ultra avanzado. Y el chip más rápido en un smartphone.</textarea>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <label style="font-size:13px; font-weight:700;">Variantes disponibles</label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <div style="display:flex; align-items:center; gap:8px; padding:8px 8px 8px 16px; border-radius:100px; background:#F1F0EC; font-size:13px; font-weight:600;">128GB <span style="width:18px; height:18px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</span></div>
+              <div style="display:flex; align-items:center; gap:8px; padding:8px 8px 8px 16px; border-radius:100px; background:#F1F0EC; font-size:13px; font-weight:600;">256GB <span style="width:18px; height:18px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</span></div>
+              <div style="display:flex; align-items:center; gap:8px; padding:8px 8px 8px 16px; border-radius:100px; background:#F1F0EC; font-size:13px; font-weight:600;">512GB <span style="width:18px; height:18px; border-radius:100px; background:#131316; color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;">×</span></div>
+              <div class="btn-ghost" style="padding:8px 16px; border-radius:100px; font-size:13px; font-weight:700;">+ Agregar variante</div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:10px; padding-top:8px; border-top:1px solid #F1F0EC;">
+            <label style="font-size:13px; font-weight:700;">Características</label>
+
+            <div style="display:flex; gap:10px;">
+              <input class="field" type="text" value="Pantalla" style="flex:1; padding:11px 14px; font-size:14px;"/>
+              <input class="field" type="text" value="6.1&quot; Super Retina XDR" style="flex:2; padding:11px 14px; font-size:14px;"/>
+              <div class="icon-btn" style="width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; border:1px solid #E6E4DE;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <input class="field" type="text" value="Chip" style="flex:1; padding:11px 14px; font-size:14px;"/>
+              <input class="field" type="text" value="A15 Bionic" style="flex:2; padding:11px 14px; font-size:14px;"/>
+              <div class="icon-btn" style="width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; border:1px solid #E6E4DE;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <input class="field" type="text" value="Cámara" style="flex:1; padding:11px 14px; font-size:14px;"/>
+              <input class="field" type="text" value="Dual 12MP, modo Noche" style="flex:2; padding:11px 14px; font-size:14px;"/>
+              <div class="icon-btn" style="width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; border:1px solid #E6E4DE;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2m-1 0v14a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1V6h6Z" stroke="oklch(0.6 0.19 25)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            </div>
+
+            <div class="btn-ghost" style="align-self:flex-start; padding:10px 18px; border-radius:10px; font-size:13px; font-weight:700; display:flex; align-items:center; gap:8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#131316" stroke-width="2" stroke-linecap="round"/></svg>
+              Agregar característica
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div style="display:flex; justify-content:flex-end; gap:12px; padding-top:8px;">
+        <div class="btn-ghost" style="padding:14px 26px; border-radius:12px; font-size:14px; font-weight:700;">Cancelar</div>
+        <div class="btn-dark" style="padding:14px 30px; border-radius:12px; font-size:14px; font-weight:700;">Guardar producto</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

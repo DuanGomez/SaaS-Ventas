@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 2440 },
+    { "file": "ProductDetail.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 1000 },
+    { "file": "AdminLogin.dc.html", "x": 0, "y": 2600, "w": 900, "h": 700 },
+    { "file": "AdminDashboard.dc.html", "x": 1000, "y": 2600, "w": 1440, "h": 1000 },
+    { "file": "AdminProductForm.dc.html", "x": 2540, "y": 2600, "w": 1440, "h": 1020 }
+  ],
+  "annotations": [
+    { "id": "note-storefront", "x": 0, "y": -100, "w": 320, "text": "Tienda pública — catálogo organizado por categorías, sin carrito ni pago en línea." },
+    { "id": "note-detail", "x": 1560, "y": -100, "w": 320, "text": "Detalle de producto — el CTA principal siempre lleva a WhatsApp." },
+    { "id": "note-admin", "x": 1000, "y": 2500, "w": 320, "text": "Panel admin — cada tenant gestiona su propio catálogo (fotos, precio, descripción, características)." }
+  ],
+  "launch": { "view": "canvas" }
+}

@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log
+
+# Backend runtime data
+backend/data.sqlite*
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/.env
+
+# Frontend build output
+frontend/dist/
+frontend/.angular/
+
+# Design canvas export (generated, published separately)
+nova-store-saas.html
+
+# OS / editor
+.DS_Store
+Thumbs.db
