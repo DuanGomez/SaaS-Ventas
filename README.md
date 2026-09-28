@@ -7,11 +7,25 @@ tenant (negocio) tiene su propia tienda pública y su propio panel de
 administración para configurar productos: fotos, precio, descripción,
 características y variantes.
 
+Diseñado y desarrollado por **[Dcodea](https://www.instagram.com/dcod.ea/)**.
+
+## Demo en vivo (GitHub Pages)
+
+Cada push a `main` publica el frontend en GitHub Pages en **modo demo**: la API se
+simula en el navegador (`frontend/src/app/core/demo/`) con los mismos endpoints y
+validaciones que el backend, y los datos se guardan en `localStorage`. Se puede
+navegar las tiendas, entrar al panel, crear productos, subir fotos y cambiar la marca.
+
+Requisito único: en el repositorio, **Settings → Pages → Source: GitHub Actions**.
+
+Para correr el modo demo en local: `cd frontend && npm install && npm start`.
+
 ## Diseño
 
-El diseño de la tienda pública y el panel admin (inspirado en apple.com e
-idroid.com.co) está en `design/*.dc.html` y fue publicado como canvas
-visual antes de implementarse.
+La interfaz sigue el ADN visual de Dcodea (`frontend/src/dcodea-dna.css`: tipografía
+Inter, botones píldora, superficies de vidrio, fondos oscuros con cuadrícula) y cada
+tienda conserva su propio color de marca y tipografía. Los mockups originales están
+en `design/*.dc.html`.
 
 ## Arquitectura
 
@@ -52,7 +66,7 @@ npm run dev    # http://localhost:3000
 ```bash
 cd frontend
 npm install
-npm start      # http://localhost:4200
+npm run start:api   # http://localhost:4200 contra la API local (npm start = modo demo)
 ```
 
 Abre `http://localhost:4200` para ver el listado de tiendas de ejemplo.

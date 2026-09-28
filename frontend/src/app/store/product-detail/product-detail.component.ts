@@ -17,7 +17,7 @@ import { getFontOption } from '../../core/fonts';
     @if (store(); as s) {
       @if (product(); as p) {
         <div
-          class="page"
+          class="page tenant-theme"
           [style.--accent]="s.accentColor"
           [style.--font-heading]="fontOption().heading"
           [style.--font-body]="fontOption().body"
@@ -94,7 +94,7 @@ import { getFontOption } from '../../core/fonts';
                 </div>
 
                 @if (p.status === 'active') {
-                  <a class="wa-buy" [href]="whatsappLink(s, p)" target="_blank" rel="noopener">
+                  <a class="wa-buy dc-sheen" [href]="whatsappLink(s, p)" target="_blank" rel="noopener">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path
                         d="M12 3C7.03 3 3 7.03 3 12c0 1.77.52 3.42 1.42 4.8L3 21l4.35-1.4A8.9 8.9 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9Z"

@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../core/api.service';
 import { Category, ProductFeature } from '../../core/models';
@@ -30,7 +30,7 @@ import { Category, ProductFeature } from '../../core/models';
             accept="image/*"
             multiple
             hidden
-            (change)="onFilesSelected($any($event.target).files)"
+            (change)="onFilesSelected($any($event.target).files); $any($event.target).value = ''"
           />
 
           <button class="upload-box" type="button" (click)="fileInput.click()">
@@ -86,7 +86,7 @@ import { Category, ProductFeature } from '../../core/models';
           <div class="field-row">
             <div class="field">
               <label>Categoría</label>
-              <select [ngModel]="categoryId" (ngModelChange)="onCategoryChange($event)">
+              <select #categoryModel="ngModel" [ngModel]="categoryId" (ngModelChange)="onCategoryChange($event, categoryModel)">
                 <option [ngValue]="null">Sin categoría</option>
                 @for (c of categories(); track c.id) {
                   <option [ngValue]="c.id">{{ c.name }}</option>
@@ -154,7 +154,7 @@ import { Category, ProductFeature } from '../../core/models';
 
       <div class="footer-actions">
         <a class="btn-ghost" [routerLink]="['/', tenant, 'admin', 'productos']">Cancelar</a>
-        <button class="btn-dark" type="button" [disabled]="saving()" (click)="save()">
+        <button class="btn-dark dc-sheen" type="button" [disabled]="saving()" (click)="save()">
           {{ saving() ? 'Guardando...' : 'Guardar producto' }}
         </button>
       </div>
@@ -299,6 +299,7 @@ import { Category, ProductFeature } from '../../core/models';
       }
       .field-row {
         display: flex;
+        flex-wrap: wrap;
         gap: 16px;
       }
       .field-row .field {
@@ -494,33 +495,45 @@ export class AdminProductFormComponent {
     return this.api.resolveAssetUrl(url);
   }
 
-  onCategoryChange(value: string | null): void {
+  onCategoryChange(value: string | null, model: NgModel): void {
     if (value !== '__new__') {
       this.categoryId = value;
       return;
     }
+    // El <select> quedó mostrando "+ Crear…": vuelve a la categoría real hasta tener la nueva.
+    const showCurrent = () => setTimeout(() => model.valueAccessor?.writeValue(this.categoryId));
+    showCurrent();
+
     const name = window.prompt('Nombre de la nueva categoría:');
     if (!name || !name.trim()) return;
-    this.api.createCategory(name.trim()).subscribe((category) => {
-      this.categories.update((cs) => [...cs, category]);
-      this.categoryId = category.id;
+    this.api.createCategory(name.trim()).subscribe({
+      next: (category) => {
+        this.categories.update((cs) => [...cs, category].sort((a, b) => a.name.localeCompare(b.name)));
+        this.categoryId = category.id;
+        showCurrent();
+      },
+      error: (err) => this.error.set(err?.error?.error ?? 'No se pudo crear la categoría'),
     });
   }
 
   onFilesSelected(files: FileList | null): void {
     if (!files || !files.length) return;
     this.uploading.set(true);
+    this.error.set(null);
     let remaining = files.length;
+    const done = () => {
+      remaining -= 1;
+      if (remaining <= 0) this.uploading.set(false);
+    };
 
     Array.from(files).forEach((file) => {
       this.api.uploadImage(file).subscribe({
-        next: (res) => {
-          this.images.update((imgs) => [...imgs, res.url]);
+        next: (res) => this.images.update((imgs) => [...imgs, res.url]),
+        error: (err) => {
+          this.error.set(err?.error?.error ?? `No se pudo subir "${file.name}"`);
+          done();
         },
-        complete: () => {
-          remaining -= 1;
-          if (remaining <= 0) this.uploading.set(false);
-        },
+        complete: done,
       });
     });
   }

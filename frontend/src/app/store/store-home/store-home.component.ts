@@ -16,7 +16,7 @@ import { getFontOption } from '../../core/fonts';
   template: `
     @if (store(); as s) {
       <div
-        class="page"
+        class="page tenant-theme"
         [style.--accent]="s.accentColor"
         [style.--font-heading]="fontOption().heading"
         [style.--font-body]="fontOption().body"
@@ -24,12 +24,12 @@ import { getFontOption } from '../../core/fonts';
         <app-store-nav [store]="s" />
 
         <section class="hero">
-          <div class="copy">
-            <div class="badge">{{ s.name }}</div>
+          <div class="copy dc-rise">
+            <div class="badge dc-chip">{{ s.name }}</div>
             <h1>{{ s.tagline || 'Catálogo disponible por WhatsApp' }}</h1>
             <p>{{ s.heroSubtitle || 'Explora el catálogo y escríbenos directo por WhatsApp para comprar.' }}</p>
             <div class="cta-row">
-              <button class="cta-btn" type="button" (click)="scrollToCatalog()">{{ s.heroCtaLabel || 'Ver catálogo' }}</button>
+              <button class="cta-btn dc-sheen" type="button" (click)="scrollToCatalog()">{{ s.heroCtaLabel || 'Ver catálogo' }}</button>
               @if (cheapestPrice(); as price) {
                 <button class="price-link" type="button" (click)="scrollToCatalog()">
                   Desde {{ price | copCurrency }}
@@ -41,7 +41,7 @@ import { getFontOption } from '../../core/fonts';
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div class="hero-visual dc-rise">
             @if (heroProduct(); as hp) {
               @if (hp.thumbnail) {
                 <img [src]="resolveUrl(hp.thumbnail)" [alt]="hp.name" />

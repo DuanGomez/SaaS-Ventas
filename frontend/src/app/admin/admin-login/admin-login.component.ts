@@ -1,14 +1,17 @@
+import { DcodeaBadgeComponent } from '../../core/dcodea-badge.component';
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../core/api.service';
 import { AuthService } from '../../core/auth.service';
+import { DEMO_PASSWORD } from '../../core/demo/demo-data';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-login',
-  imports: [FormsModule],
+  imports: [FormsModule, DcodeaBadgeComponent],
   template: `
-    <div class="wrap">
+    <div class="wrap dc-dark">
       <div class="card">
         <div class="head">
           <div class="brand">{{ tenant }}<span class="dot">.</span></div>
@@ -36,21 +39,27 @@ import { AuthService } from '../../core/auth.service';
             <div class="error">{{ error() }}</div>
           }
 
-          <button class="submit" type="submit" [disabled]="loading()">
+          <button class="submit dc-sheen" type="submit" [disabled]="loading()">
             {{ loading() ? 'Ingresando...' : 'Iniciar sesión' }}
           </button>
         </form>
 
-        <div class="note">Acceso exclusivo para administradores de la tienda.</div>
+        @if (isDemo) {
+          <div class="note demo">Modo demo: las credenciales de esta tienda ya están cargadas.</div>
+        } @else {
+          <div class="note">Acceso exclusivo para administradores de la tienda.</div>
+        }
       </div>
+      <app-dcodea-badge />
     </div>
   `,
   styles: [
     `
       .wrap {
         min-height: 100vh;
-        background: var(--ink);
         display: flex;
+        flex-direction: column;
+        gap: 24px;
         align-items: center;
         justify-content: center;
         padding: 24px;
@@ -139,6 +148,13 @@ import { AuthService } from '../../core/auth.service';
         text-align: center;
         line-height: 1.6;
       }
+      .note.demo {
+        background: var(--accent-soft);
+        color: var(--accent);
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-weight: 600;
+      }
     `,
   ],
 })
@@ -149,8 +165,9 @@ export class AdminLoginComponent {
   private auth = inject(AuthService);
 
   tenant = this.route.snapshot.paramMap.get('tenant')!;
-  email = '';
-  password = '';
+  isDemo = environment.demo;
+  email = this.isDemo ? `admin@${this.tenant}.com` : '';
+  password = this.isDemo ? DEMO_PASSWORD : '';
   loading = signal(false);
   error = signal<string | null>(null);
 

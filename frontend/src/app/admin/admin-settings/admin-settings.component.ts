@@ -34,7 +34,7 @@ import { ProductSummary } from '../../core/models';
                     </svg>
                   }
                 </div>
-                <input #logoInput type="file" accept="image/*" hidden (change)="onLogoSelected($any($event.target).files)" />
+                <input #logoInput type="file" accept="image/*" hidden (change)="onLogoSelected($any($event.target).files); $any($event.target).value = ''" />
                 <button class="btn-ghost" type="button" (click)="logoInput.click()">
                   {{ uploadingLogo() ? 'Subiendo...' : logoUrl() ? 'Cambiar logo' : 'Subir logo' }}
                 </button>
@@ -137,7 +137,7 @@ import { ProductSummary } from '../../core/models';
         <div class="message" [class.error]="isError()">{{ message() }}</div>
       }
 
-      <button class="btn-dark" type="button" [disabled]="saving()" (click)="save()">
+      <button class="btn-dark dc-sheen" type="button" [disabled]="saving()" (click)="save()">
         {{ saving() ? 'Guardando...' : 'Guardar cambios' }}
       </button>
     }
@@ -158,7 +158,7 @@ import { ProductSummary } from '../../core/models';
       }
       .sections {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
         gap: 24px;
         margin-bottom: 24px;
         align-items: start;
@@ -189,7 +189,11 @@ import { ProductSummary } from '../../core/models';
       }
       .field-row {
         display: flex;
+        flex-wrap: wrap;
         gap: 16px;
+      }
+      .field-row .field {
+        min-width: 200px;
       }
       label {
         font-size: 13px;
@@ -360,7 +364,11 @@ export class AdminSettingsComponent {
         this.logoUrl.set(res.url);
         this.uploadingLogo.set(false);
       },
-      error: () => this.uploadingLogo.set(false),
+      error: (err) => {
+        this.uploadingLogo.set(false);
+        this.isError.set(true);
+        this.message.set(err?.error?.error ?? 'No se pudo subir el logo.');
+      },
     });
   }
 
@@ -388,10 +396,10 @@ export class AdminSettingsComponent {
           this.isError.set(false);
           this.message.set('Cambios guardados correctamente.');
         },
-        error: () => {
+        error: (err) => {
           this.saving.set(false);
           this.isError.set(true);
-          this.message.set('No se pudieron guardar los cambios.');
+          this.message.set(err?.error?.error ?? 'No se pudieron guardar los cambios.');
         },
       });
   }

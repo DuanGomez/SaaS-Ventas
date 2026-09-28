@@ -1,3 +1,4 @@
+import { DcodeaBadgeComponent } from '../../core/dcodea-badge.component';
 import { Component, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -6,10 +7,10 @@ import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-admin-layout',
-  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, DcodeaBadgeComponent],
   template: `
-    <div class="shell">
-      <aside class="sidebar">
+    <div class="shell tenant-theme" [style.--accent]="accent()">
+      <aside class="sidebar dc-dark">
         <div class="brand">{{ tenant }}<span class="dot">.</span> <span class="tag">admin</span></div>
         <nav>
           <a
@@ -52,6 +53,7 @@ import { AuthService } from '../../core/auth.service';
             Configuración
           </a>
         </nav>
+        <app-dcodea-badge class="badge" />
         <button class="link logout" (click)="logout()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -88,7 +90,6 @@ import { AuthService } from '../../core/auth.service';
       }
       .sidebar {
         width: 260px;
-        background: var(--ink);
         display: flex;
         flex-direction: column;
         padding: 28px 20px;
@@ -138,8 +139,10 @@ import { AuthService } from '../../core/auth.service';
         color: #fff;
         background: var(--accent);
       }
-      .logout {
+      .badge {
         margin-top: auto;
+      }
+      .logout {
         text-align: left;
         width: 100%;
       }
@@ -173,6 +176,48 @@ import { AuthService } from '../../core/auth.service';
       .content {
         padding: 36px 40px 60px;
       }
+      @media (max-width: 860px) {
+        .shell {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 12px;
+          padding: 14px 16px;
+        }
+        .brand {
+          padding: 0;
+          flex: 1;
+        }
+        nav {
+          order: 3;
+          width: 100%;
+          flex-direction: row;
+          overflow-x: auto;
+        }
+        .link {
+          white-space: nowrap;
+          padding: 9px 12px;
+        }
+        .badge {
+          display: none;
+        }
+        .logout {
+          margin: 0;
+          width: auto;
+        }
+        .topbar {
+          height: auto;
+          padding: 12px 16px;
+          gap: 12px;
+        }
+        .content {
+          padding: 24px 16px 48px;
+        }
+      }
     `,
   ],
 })
@@ -185,10 +230,12 @@ export class AdminLayoutComponent {
 
   tenant = this.route.snapshot.paramMap.get('tenant')!;
   storeName = signal<string | null>(null);
+  accent = signal<string | null>(null);
 
   constructor() {
     this.api.getAdminStore().subscribe((s) => {
       this.storeName.set(s.name);
+      this.accent.set(s.accentColor);
       this.titleService.setTitle(`Administración · ${s.name}`);
     });
   }

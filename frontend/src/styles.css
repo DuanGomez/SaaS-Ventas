@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
 
 :root {
-  --font-heading: 'Sora', system-ui, sans-serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Base Dcodea (Inter); cada tienda puede elegir su propia tipografía desde el panel. */
+  --font-heading: var(--dc-font);
+  --font-body: var(--dc-font);
   --bg: #fafaf7;
   --surface: #ffffff;
   --surface-alt: #f1f0ec;
@@ -20,8 +21,8 @@
   --success-ink: #1e7a45;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-lg: var(--dc-radius-md);
+  --radius-xl: var(--dc-radius-lg);
 }
 
 * {
@@ -35,6 +36,7 @@ body {
 }
 
 body {
+  letter-spacing: -0.011em;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
@@ -46,6 +48,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
@@ -70,4 +73,12 @@ select {
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Tema por tienda: todo el ADN Dcodea toma el color de marca que el negocio configuró. */
+.tenant-theme {
+  --brand: var(--accent);
+  --brand-2: color-mix(in srgb, var(--accent) 62%, #00e5ff);
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, white);
+  --accent-dark: color-mix(in srgb, var(--accent) 82%, black);
 }

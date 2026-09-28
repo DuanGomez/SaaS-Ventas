@@ -1,8 +1,10 @@
+import { DcodeaBadgeComponent } from '../../core/dcodea-badge.component';
 import { Component, input } from '@angular/core';
 import { StoreInfo } from '../../core/models';
 
 @Component({
   selector: 'app-store-footer',
+  imports: [DcodeaBadgeComponent],
   template: `
     <div class="footer">
       <div class="top">
@@ -21,13 +23,16 @@ import { StoreInfo } from '../../core/models';
           }
         </div>
       </div>
-      <div class="bottom">© {{ year }} {{ store().name }}. Todos los derechos reservados.</div>
+      <div class="bottom">
+        <span>© {{ year }} {{ store().name }}. Todos los derechos reservados.</span>
+        <app-dcodea-badge />
+      </div>
     </div>
   `,
   styles: [
     `
       .footer {
-        background: var(--ink);
+        background: var(--dc-navy);
         color: #fff;
         padding: 56px clamp(20px, 5vw, 64px) 32px;
         display: flex;
@@ -75,6 +80,11 @@ import { StoreInfo } from '../../core/models';
         padding-top: 20px;
         font-size: 13px;
         color: #7c7c82;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
       }
     `,
   ],

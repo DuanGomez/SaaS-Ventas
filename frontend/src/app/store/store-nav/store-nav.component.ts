@@ -17,7 +17,7 @@ import { ApiService } from '../../core/api.service';
         }
       </a>
       <div class="actions">
-        <a class="wa-btn" [href]="waLink()" target="_blank" rel="noopener">
+        <a class="wa-btn dc-sheen" [href]="waLink()" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path
               d="M12 3C7.03 3 3 7.03 3 12c0 1.77.52 3.42 1.42 4.8L3 21l4.35-1.4A8.9 8.9 0 0 0 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9Z"
@@ -46,8 +46,9 @@ import { ApiService } from '../../core/api.service';
         justify-content: space-between;
         padding: 0 clamp(20px, 5vw, 64px);
         height: 84px;
-        background: rgba(250, 250, 247, 0.85);
-        backdrop-filter: blur(12px);
+        background: rgba(250, 250, 247, 0.72);
+        backdrop-filter: blur(14px) saturate(170%);
+        -webkit-backdrop-filter: blur(14px) saturate(170%);
         border-bottom: 1px solid var(--border);
       }
       .brand {

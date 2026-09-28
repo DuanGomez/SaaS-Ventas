@@ -187,6 +187,10 @@ adminRouter.post("/categories", (req, res) => {
 
   const id = newId("cat");
   const slug = slugify(name);
+  const duplicate = db
+    .prepare("SELECT id FROM categories WHERE tenant_id = ? AND slug = ?")
+    .get(req.auth!.tenantId, slug);
+  if (duplicate) return res.status(409).json({ error: "Ya existe una categoría con ese nombre" });
   db.prepare("INSERT INTO categories (id, tenant_id, name, slug) VALUES (?, ?, ?, ?)").run(
     id,
     req.auth!.tenantId,
@@ -230,15 +234,22 @@ interface ProductBody {
   variants: string[];
 }
 
-function validateProductBody(body: Partial<ProductBody>): string | null {
+function validateProductBody(body: Partial<ProductBody>, tenantId: string): string | null {
   if (!body.name || !body.name.trim()) return "El nombre del producto es obligatorio";
   if (typeof body.price !== "number" || body.price < 0) return "El precio debe ser un número válido";
+  if (body.status && !["active", "sold_out"].includes(body.status)) return "Estado no válido";
+  if (body.categoryId) {
+    const category = db
+      .prepare("SELECT id FROM categories WHERE id = ? AND tenant_id = ?")
+      .get(body.categoryId, tenantId);
+    if (!category) return "Categoría no válida";
+  }
   return null;
 }
 
 adminRouter.post("/products", (req, res) => {
   const body = req.body as Partial<ProductBody>;
-  const error = validateProductBody(body);
+  const error = validateProductBody(body, req.auth!.tenantId);
   if (error) return res.status(400).json({ error });
 
   const id = newId("prod");
@@ -267,7 +278,7 @@ adminRouter.put("/products/:id", (req, res) => {
   if (!existing) return res.status(404).json({ error: "Producto no encontrado" });
 
   const body = req.body as Partial<ProductBody>;
-  const error = validateProductBody(body);
+  const error = validateProductBody(body, req.auth!.tenantId);
   if (error) return res.status(400).json({ error });
 
   db.prepare(

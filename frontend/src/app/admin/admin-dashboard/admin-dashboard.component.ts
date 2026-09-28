@@ -13,7 +13,7 @@ import { CopCurrencyPipe } from '../../core/cop-currency.pipe';
         <h1>Productos</h1>
         <div class="sub">Gestiona el catálogo que ven tus clientes</div>
       </div>
-      <a class="new-btn" routerLink="nuevo">
+      <a class="new-btn dc-sheen" routerLink="nuevo">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>
@@ -147,7 +147,16 @@ import { CopCurrencyPipe } from '../../core/cop-currency.pipe';
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 20px;
-        overflow: hidden;
+        overflow-x: auto;
+      }
+      @media (max-width: 860px) {
+        .row {
+          min-width: 640px;
+        }
+        .head {
+          flex-wrap: wrap;
+          gap: 16px;
+        }
       }
       .row {
         display: grid;

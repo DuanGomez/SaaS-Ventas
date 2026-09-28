@@ -137,7 +137,8 @@ export class ApiService {
   }
 
   resolveAssetUrl(url: string): string {
-    if (url.startsWith('http')) return url;
+    // En modo demo las imágenes son archivos del propio sitio (demo/*.svg) o data URLs.
+    if (url.startsWith('http') || url.startsWith('data:') || environment.demo) return url;
     return `${this.base.replace(/\/api$/, '')}${url}`;
   }
 }
