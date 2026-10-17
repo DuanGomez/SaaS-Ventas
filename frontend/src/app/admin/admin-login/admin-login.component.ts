@@ -64,10 +64,14 @@ import { environment } from '../../../environments/environment';
         justify-content: center;
         padding: 24px;
       }
+      @media (max-width: 480px) {
+        .card { padding: 32px 22px !important; }
+      }
       .card {
         width: 100%;
         max-width: 420px;
         background: var(--surface);
+        color: var(--ink);
         border-radius: 24px;
         padding: 44px 40px;
         display: flex;

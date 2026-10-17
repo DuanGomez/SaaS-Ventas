@@ -189,9 +189,14 @@ import { Category, ProductFeature } from '../../core/models';
         border: 1px solid var(--border);
         border-radius: 20px;
         padding: 24px;
+        box-sizing: border-box;
+      }
+      @media (max-width: 480px) {
+        .layout { gap: 16px; }
+        .panel { padding: 18px; }
       }
       .images-panel {
-        width: 380px;
+        width: min(380px, 100%);
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -199,7 +204,7 @@ import { Category, ProductFeature } from '../../core/models';
       }
       .fields-panel {
         flex: 1;
-        min-width: 320px;
+        min-width: min(320px, 100%);
         display: flex;
         flex-direction: column;
         gap: 20px;

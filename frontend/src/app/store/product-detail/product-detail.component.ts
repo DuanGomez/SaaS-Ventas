@@ -135,6 +135,11 @@ import { getFontOption } from '../../core/fonts';
 
           <app-store-footer [store]="s" />
         </div>
+      } @else if (notFound()) {
+        <div class="not-found">
+          <h1>Producto no encontrado</h1>
+          <a [routerLink]="['/', tenant]">Volver a la tienda</a>
+        </div>
       }
     } @else if (notFound()) {
       <div class="not-found">

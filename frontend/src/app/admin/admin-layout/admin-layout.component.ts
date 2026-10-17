@@ -197,10 +197,17 @@ import { AuthService } from '../../core/auth.service';
           width: 100%;
           flex-direction: row;
           overflow-x: auto;
+          gap: 4px;
+          scrollbar-width: none;
         }
         .link {
           white-space: nowrap;
           padding: 9px 12px;
+          flex: 1 1 auto;
+          justify-content: center;
+        }
+        @media (max-width: 420px) {
+          .link { padding: 9px 8px; font-size: 13px; gap: 6px; }
         }
         .badge {
           display: none;
