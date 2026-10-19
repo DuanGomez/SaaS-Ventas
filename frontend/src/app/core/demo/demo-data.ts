@@ -1,6 +1,6 @@
 /**
  * Catálogo de ejemplo del modo demo (GitHub Pages). Replica el seed del backend
- * y le agrega ilustraciones de producto (public/demo/*.svg).
+ * y le agrega fotos de producto (public/demo/*.webp, CC0).
  */
 
 export const DEMO_PASSWORD = 'admin123';
@@ -50,7 +50,7 @@ export interface DemoDb {
   products: DemoProduct[];
 }
 
-export const DEMO_DB_VERSION = 1;
+export const DEMO_DB_VERSION = 2;
 
 export function newId(prefix: string): string {
   return `${prefix}_${Math.random().toString(36).slice(2, 14)}`;
@@ -91,7 +91,7 @@ const SEED: SeedTenant[] = [
       {
         name: 'iPhone 15', price: 3899000, category: 'iPhone', status: 'active', views: 412,
         description: 'Dynamic Island, cámara de 48 MP y puerto USB-C. Sellado, con un año de garantía.',
-        images: ['demo/iphone-15.svg'],
+        images: ['demo/iphone-15.webp'],
         features: [
           { label: 'Pantalla', value: '6.1" Super Retina XDR' }, { label: 'Chip', value: 'A16 Bionic' },
           { label: 'Cámara', value: '48 MP principal + ultra gran angular' }, { label: 'Conector', value: 'USB-C' },
@@ -101,7 +101,7 @@ const SEED: SeedTenant[] = [
       {
         name: 'iPhone 13 Pro', price: 3299000, category: 'iPhone', status: 'active', views: 238,
         description: 'Pantalla de 120Hz y triple cámara. Ideal si grabas mucho video o editas fotos.',
-        images: ['demo/iphone-13-pro.svg'],
+        images: ['demo/iphone-13-pro.webp'],
         features: [
           { label: 'Pantalla', value: '6.1" Super Retina XDR ProMotion' }, { label: 'Chip', value: 'A15 Bionic' },
           { label: 'Cámara', value: 'Triple 12MP con LiDAR' },
@@ -111,7 +111,7 @@ const SEED: SeedTenant[] = [
       {
         name: 'iPhone 13', price: 2499000, category: 'iPhone', status: 'active', views: 305,
         description: 'Equipo sellado, con garantía de la tienda. Buen rendimiento para el día a día y cámara doble para fotos y video.',
-        images: ['demo/iphone-13.svg'],
+        images: ['demo/iphone-13.webp'],
         features: [
           { label: 'Pantalla', value: '6.1" Super Retina XDR' }, { label: 'Chip', value: 'A15 Bionic' },
           { label: 'Cámara', value: 'Dual 12MP, modo Noche' }, { label: 'Batería', value: 'Hasta 19h de video' },
@@ -121,21 +121,21 @@ const SEED: SeedTenant[] = [
       {
         name: 'AirPods Pro', price: 899000, category: 'Accesorios', status: 'active', views: 176,
         description: 'Con cancelación de ruido. Vienen en su caja original, sin abrir.',
-        images: ['demo/airpods-pro.svg'],
+        images: ['demo/airpods-pro.webp'],
         features: [{ label: 'Autonomía', value: 'Hasta 4.5h por carga' }, { label: 'Estuche', value: 'Carga MagSafe' }],
         variants: [],
       },
       {
         name: 'Funda MagSafe', price: 129000, category: 'Accesorios', status: 'active', views: 94,
         description: 'Silicona suave al tacto con imanes alineados para cargadores MagSafe.',
-        images: ['demo/funda-magsafe.svg'],
+        images: ['demo/funda-magsafe.webp'],
         features: [{ label: 'Material', value: 'Silicona' }],
         variants: ['iPhone 13', 'iPhone 13 Pro', 'iPhone 15'],
       },
       {
         name: 'Cargador USB-C 20W', price: 99000, category: 'Accesorios', status: 'sold_out', views: 58,
         description: 'Carga rápida: 50% de batería en unos 30 minutos.',
-        images: ['demo/cargador-20w.svg'],
+        images: ['demo/cargador-20w.webp'],
         features: [{ label: 'Potencia', value: '20 W' }],
         variants: [],
       },
@@ -157,35 +157,35 @@ const SEED: SeedTenant[] = [
       {
         name: 'Runner Air X', price: 349000, category: 'Running', status: 'active', views: 221,
         description: 'Liviana, buena amortiguación. La uso yo mismo para correr y aguanta bien.',
-        images: ['demo/runner-air-x.svg'],
+        images: ['demo/runner-air-x.webp'],
         features: [{ label: 'Material', value: 'Malla transpirable' }, { label: 'Suela', value: 'Goma antideslizante' }],
         variants: ['38', '39', '40', '41', '42'],
       },
       {
         name: 'Trail Pro GTX', price: 429000, category: 'Running', status: 'active', views: 133,
         description: 'Para montaña y lluvia: membrana impermeable y agarre en terreno suelto.',
-        images: ['demo/trail-pro.svg'],
+        images: ['demo/trail-pro.webp'],
         features: [{ label: 'Impermeable', value: 'Sí' }, { label: 'Drop', value: '6 mm' }],
         variants: ['39', '40', '41', '42', '43'],
       },
       {
         name: 'Street Classic', price: 259000, category: 'Casual', status: 'active', views: 187,
         description: 'El modelo que más se vende. Combina con todo, para uso diario.',
-        images: ['demo/street-classic.svg'],
+        images: ['demo/street-classic.webp'],
         features: [{ label: 'Material', value: 'Cuero sintético' }],
         variants: ['38', '39', '40', '41', '42', '43'],
       },
       {
         name: 'Canvas Low', price: 189000, category: 'Casual', status: 'active', views: 76,
         description: 'Lona resistente y suela vulcanizada. Clásicas, cómodas y fáciles de lavar.',
-        images: ['demo/canvas-low.svg'],
+        images: ['demo/canvas-low.webp'],
         features: [{ label: 'Material', value: 'Lona de algodón' }],
         variants: ['36', '37', '38', '39', '40', '41'],
       },
       {
         name: 'Medias deportivas x3', price: 39000, category: 'Accesorios', status: 'active', views: 41,
         description: 'Pack de tres pares con refuerzo en talón y puntera.',
-        images: ['demo/medias-pack.svg'],
+        images: ['demo/medias-pack.webp'],
         features: [{ label: 'Composición', value: 'Algodón y poliéster' }],
         variants: ['S', 'M', 'L'],
       },
@@ -207,35 +207,35 @@ const SEED: SeedTenant[] = [
       {
         name: 'Huila Especial', price: 42000, category: 'Grano', status: 'active', views: 164,
         description: 'Del mismo finquero desde hace 3 años. Sabe a panela, con un toque de frutos rojos.',
-        images: ['demo/huila-especial.svg'],
+        images: ['demo/huila-especial.webp'],
         features: [{ label: 'Origen', value: 'Huila, Colombia' }, { label: 'Tueste', value: 'Medio' }],
         variants: ['250g', '500g', '1kg'],
       },
       {
         name: 'Nariño Reserva', price: 45000, category: 'Molido', status: 'active', views: 121,
         description: 'Molido para espresso. Dulce y achocolatado, el favorito de la casa.',
-        images: ['demo/narino-reserva.svg'],
+        images: ['demo/narino-reserva.webp'],
         features: [{ label: 'Origen', value: 'Nariño, Colombia' }],
         variants: ['250g', '500g'],
       },
       {
         name: 'Sierra Nevada', price: 39000, category: 'Grano', status: 'active', views: 68,
         description: 'Notas cítricas y cuerpo ligero. Perfecto para métodos de filtrado.',
-        images: ['demo/sierra-nevada.svg'],
+        images: ['demo/sierra-nevada.webp'],
         features: [{ label: 'Origen', value: 'Sierra Nevada de Santa Marta' }, { label: 'Tueste', value: 'Claro' }],
         variants: ['250g', '500g'],
       },
       {
-        name: 'Prensa francesa 600 ml', price: 129000, category: 'Accesorios', status: 'active', views: 37,
-        description: 'Vidrio borosilicato y filtro de acero. Cuatro tazas en cuatro minutos.',
-        images: ['demo/prensa-francesa.svg'],
+        name: 'Cafetera de goteo 600 ml', price: 129000, category: 'Accesorios', status: 'active', views: 37,
+        description: 'Jarra de vidrio borosilicato con filtro de goteo. Cuatro tazas en cuatro minutos.',
+        images: ['demo/cafetera-goteo.webp'],
         features: [{ label: 'Capacidad', value: '600 ml' }],
         variants: [],
       },
       {
         name: 'Cold brew concentrado', price: 28000, category: 'Molido', status: 'active', views: 52,
         description: 'Extracción en frío de 18 horas. Mézclalo con agua o leche y hielo.',
-        images: ['demo/cold-brew.svg'],
+        images: ['demo/cold-brew.webp'],
         features: [{ label: 'Presentación', value: 'Botella 500 ml' }],
         variants: [],
       },

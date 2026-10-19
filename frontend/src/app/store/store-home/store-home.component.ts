@@ -198,10 +198,9 @@ import { getFontOption } from '../../core/fonts';
         flex-shrink: 0;
       }
       .hero-visual img {
-        max-width: 70%;
-        max-height: 78%;
-        object-fit: contain;
-        border-radius: 16px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
       .hero-icon {
         color: var(--accent);

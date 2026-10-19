@@ -287,9 +287,9 @@ interface DemoTenant {
 })
 export class LandingComponent {
   readonly demoTenants: DemoTenant[] = [
-    { slug: 'nova', name: 'NOVA Store', category: 'Tecnología · iPhone', accent: '#4F46E5', image: 'demo/iphone-15.svg' },
-    { slug: 'urbanfeet', name: 'UrbanFeet', category: 'Calzado', accent: '#EA580C', image: 'demo/runner-air-x.svg' },
-    { slug: 'cafenube', name: 'Café Nube', category: 'Café de origen', accent: '#7C4A2D', image: 'demo/huila-especial.svg' },
+    { slug: 'nova', name: 'NOVA Store', category: 'Tecnología · iPhone', accent: '#4F46E5', image: 'demo/iphone-15.webp' },
+    { slug: 'urbanfeet', name: 'UrbanFeet', category: 'Calzado', accent: '#EA580C', image: 'demo/runner-air-x.webp' },
+    { slug: 'cafenube', name: 'Café Nube', category: 'Café de origen', accent: '#7C4A2D', image: 'demo/huila-especial.webp' },
   ];
 
   readonly steps = [
